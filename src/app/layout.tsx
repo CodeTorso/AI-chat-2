@@ -1,6 +1,8 @@
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
+import { ThemeProvider } from "~/components/themeProvider";
+import { Toaster } from "~/components/ui/toaster";
 
 export const metadata = {
   title: "AI Bot",
@@ -15,7 +17,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+
+        <body
+          className="min-h-screen bg-gray-950"
+        >
+          <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+        <Toaster />
+        </body>
     </html>
   );
 }
